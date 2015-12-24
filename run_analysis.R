@@ -58,7 +58,7 @@ View(data_tidy)
 
 # creates a second, independent tidy data set with the average of each variable for each activity and each subject
   # creates empty data_average
-data_average <- cbind(data_tidy[FALSE,], data.frame())
+data_average <- as.data.frame(data_tidy[FALSE,])
 data_average <- within(data_average, rm(set))
 data_groups <- merge(data.frame("activity" = activity_labels$activity), data.frame("subject" = order(unique(data_tidy$subject))))
 data_average <- merge(data_groups, data_average, all = TRUE)
