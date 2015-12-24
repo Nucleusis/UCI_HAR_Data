@@ -60,7 +60,7 @@ View(data_tidy)
   # creates empty data_average
 data_average <- cbind(data_tidy[FALSE,], data.frame())
 data_average <- within(data_average, rm(set))
-data_groups <- merge(data.frame("activity" = activity_labels$activity), data.frame("subject" = 1:30))
+data_groups <- merge(data.frame("activity" = activity_labels$activity), data.frame("subject" = order(unique(data_tidy$subject))))
 data_average <- merge(data_groups, data_average, all = TRUE)
 rm(data_groups)
 rm(activity_labels)
